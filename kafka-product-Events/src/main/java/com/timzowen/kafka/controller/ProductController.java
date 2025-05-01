@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products/")
 public class ProductController {
 
     private final ProductService productService;
@@ -19,7 +19,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping
+    @PostMapping("create-product")
     public ResponseEntity<String> createProduct(@RequestBody Product product){
         String productId = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(productId);
